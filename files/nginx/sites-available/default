@@ -1,0 +1,52 @@
+server {
+  listen 80;
+  charset utf8;
+  server_name vagrant.local _;
+  root /vagrant/public;
+  index index.php index.html;
+
+  # You usually want to serve static files with Nginx
+  # Set to off to resolve a bug:
+  # https://github.com/mitchellh/vagrant/issues/351#issuecomment-1339640
+  sendfile off;
+
+  # Legacy redirect rules
+  # Pages
+  # rewrite ^/index\.html$ / permanent;
+
+  location ~ \.php$ {
+    try_files $uri =404;
+    fastcgi_split_path_info ^(.+\.php)(/.+)$;
+    fastcgi_pass unix:/var/run/php5-fpm.sock;
+    fastcgi_index index.php;
+    include fastcgi_params;
+    fastcgi_read_timeout 300;
+  }
+
+  location ~ ^(.*)$ {
+
+      # Disable caching
+      expires -1;
+      add_header Cache-Control "no-cache";
+
+      try_files $uri $uri/ /index.php?p=$uri&$args;
+  }
+
+  # Cache busting
+  location ~* (\/_\/.+)\.(\d+)\.(js|css)$ {
+
+      # Disable caching
+      expires -1;
+      add_header Cache-Control "no-cache";
+
+     try_files $uri $1.$3;
+  }
+
+  # Force the latest IE version
+  # Use ChromeFrame if it's installed for a better experience for the poor IE folk
+  add_header "X-UA-Compatible" "IE=Edge,chrome=1";
+
+  location = /robots.txt  { access_log off; log_not_found off; }
+  location = /favicon.ico { access_log off; log_not_found off; }
+  location ~ /\. { access_log off; log_not_found off; deny all; }
+}

@@ -1,0 +1,27 @@
+server {
+  # Port to listen on
+  listen 9000;
+
+  # The host name to respond to
+  server_name _;
+
+  # Path for static files
+  root /phpmyadmin;
+
+  # Index pages
+  index index.php;
+
+  #Specify a charset
+  charset utf-8;
+
+  # PHP config
+  location ~ \.php$ {
+    try_files $uri =404;
+    fastcgi_split_path_info ^(.+\.php)(/.+)$;
+    fastcgi_pass unix:/var/run/php5-fpm.sock;
+    fastcgi_index index.php;
+    include fastcgi_params;
+    fastcgi_read_timeout 300;
+  }
+  
+}

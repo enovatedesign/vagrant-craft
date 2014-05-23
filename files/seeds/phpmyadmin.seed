@@ -1,0 +1,41 @@
+phpmyadmin	phpmyadmin/app-password-confirm	password	
+phpmyadmin	phpmyadmin/mysql/admin-pass	password	
+phpmyadmin	phpmyadmin/password-confirm	password	
+phpmyadmin	phpmyadmin/setup-password	password	
+# MySQL application password for phpmyadmin:
+phpmyadmin	phpmyadmin/mysql/app-pass	password	
+phpmyadmin	phpmyadmin/remove-error	select	abort
+phpmyadmin	phpmyadmin/internal/reconfiguring	boolean	false
+phpmyadmin	phpmyadmin/missing-db-package-error	select	abort
+phpmyadmin	phpmyadmin/setup-username	string	admin
+# MySQL username for phpmyadmin:
+phpmyadmin	phpmyadmin/db/app-user	string	
+phpmyadmin	phpmyadmin/install-error	select	abort
+phpmyadmin	phpmyadmin/reconfigure-webserver	multiselect	
+# Host running the MySQL server for phpmyadmin:
+phpmyadmin	phpmyadmin/remote/newhost	string	
+# Host name of the MySQL database server for phpmyadmin:
+phpmyadmin	phpmyadmin/remote/host	select	
+phpmyadmin	phpmyadmin/upgrade-error	select	abort
+# Reinstall database for phpmyadmin?
+phpmyadmin	phpmyadmin/dbconfig-reinstall	boolean	false
+# Configure database for phpmyadmin with dbconfig-common?
+phpmyadmin	phpmyadmin/dbconfig-install	boolean	false
+# MySQL database name for phpmyadmin:
+phpmyadmin	phpmyadmin/db/dbname	string	
+# Database type to be used by phpmyadmin:
+phpmyadmin	phpmyadmin/database-type	select	mysql
+phpmyadmin	phpmyadmin/internal/skip-preseed	boolean	true
+phpmyadmin	phpmyadmin/remote/port	string	
+# Perform upgrade on database for phpmyadmin with dbconfig-common?
+phpmyadmin	phpmyadmin/dbconfig-upgrade	boolean	true
+# Do you want to back up the database for phpmyadmin before upgrading?
+phpmyadmin	phpmyadmin/upgrade-backup	boolean	true
+# Deconfigure database for phpmyadmin with dbconfig-common?
+phpmyadmin	phpmyadmin/dbconfig-remove	boolean	
+phpmyadmin	phpmyadmin/passwords-do-not-match	error	
+# Connection method for MySQL database of phpmyadmin:
+phpmyadmin	phpmyadmin/mysql/method	select	unix socket
+phpmyadmin	phpmyadmin/mysql/admin-user	string	root
+# Do you want to purge the database for phpmyadmin?
+phpmyadmin	phpmyadmin/purge	boolean	false
