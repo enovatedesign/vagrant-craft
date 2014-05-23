@@ -1,18 +1,15 @@
-[submodule "puppet/modules/nginx"]
-	path = puppet/modules/nginx
-	url = https://github.com/example42/puppet-nginx.git
-[submodule "puppet/modules/mysql"]
-	path = puppet/modules/mysql
-	url = https://github.com/example42/puppet-mysql.git
-[submodule "puppet/modules/varnish"]
-	path = puppet/modules/varnish
-	url = https://github.com/zylon-internet/puppet-varnish
-[submodule "puppet/modules/pear"]
-	path = puppet/modules/pear
-	url = https://github.com/rafaelfelix/puppet-pear.git
 [submodule "puppet/modules/apt"]
 	path = puppet/modules/apt
 	url = https://github.com/puppetlabs/puppetlabs-apt
+[submodule "puppet/modules/mysql"]
+	path = puppet/modules/mysql
+	url = https://github.com/example42/puppet-mysql.git
+[submodule "puppet/modules/nginx"]
+	path = puppet/modules/nginx
+	url = https://github.com/example42/puppet-nginx.git
+[submodule "puppet/modules/pear"]
+	path = puppet/modules/pear
+	url = https://github.com/rafaelfelix/puppet-pear.git
 [submodule "puppet/modules/phpqatools"]
 	path = puppet/modules/phpqatools
 	url = https://github.com/rafaelfelix/puppet-phpqatools
@@ -22,3 +19,6 @@
 [submodule "puppet/modules/puppi"]
 	path = puppet/modules/puppi
 	url = https://github.com/example42/puppi.git
+[submodule "puppet/modules/varnish"]
+	path = puppet/modules/varnish
+	url = https://github.com/zylon-internet/puppet-varnish
