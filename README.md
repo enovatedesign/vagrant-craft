@@ -65,9 +65,15 @@ Important gotchas
 			'tablePrefix' => 'craft'
 		)
 
-2. For performance reasons the `craft/storage/runtime` folder is excluded from the Vagrant synced folder.  As Craft writes a lot of log entries here this has a major impact on the VM performance (particularly on Windows).  So excluding the folder makes the site run a LOT quicker but remember you need to `vagrant ssh` onto the VM to access the `craft.log` file.
+2. The Nginx virtual host file assumes you are serving Craft from a folder called `public` within the root of your project, if that's not the case it can be edited in the file `/files/nginx/sites-available/default` at line 5.
 
-3. Running `vagrant destroy` is the virtual equivalent of throwing a computer out of the window so make sure you have a DB back-up first!
+3. For performance reasons the `craft/storage/runtime` folder is excluded from the Vagrant synced folder.  As Craft writes a lot of log entries here this has a major impact on the VM performance (particularly on Windows).  So excluding the folder makes the site run a LOT quicker but remember you need to `vagrant ssh` onto the VM to access the `craft.log` file.
+
+4. In the Vagrantfile on lines 21 and 22 you may need to adjust the memory and CPU settings for the VM.
+
+5. Using the `precise64.box` assumes you are running a 64-bit OS. I haven't tried but I assume you can switch to `precise32.box` if necessary (lines 10 and 11 of the Vagrantfile).
+
+6. Running `vagrant destroy` is the virtual equivalent of throwing a computer out of the window so make sure you have a DB back-up first!
 
 Nginx
 -----
@@ -99,6 +105,11 @@ Craft CMS not included!
 -----------------------
 
 This doesn't actually include Craft CMS! Sorry, it's intended to be dropped *into* your Craft CMS project.
+
+Troubleshooting
+===============
+
+You can un-comment line 20 in the Vagrantfile so that Virtualbox will launch a GUI so you can see the console for the VM as it launches and deal with any warnings/issues.
 
 With thanks to...
 =================
