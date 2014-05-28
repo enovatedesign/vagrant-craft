@@ -1,5 +1,5 @@
-Vagrant Craft
-=============
+Vagrant + Craft CMS
+===================
 
 A puppet provisioned Vagrant development server for Craft CMS projects. It uses the standard Vagrant Ubuntu Precise base box `precise64.box`.
 
@@ -52,10 +52,12 @@ First you need to install [Virtualbox](https://www.virtualbox.org/) and [Vagrant
 
 You can use your hosts file to point [http://craft.dev:8080/](http://craft.dev:8080/) or any domain you fancy at the site.
 
-Important gotchas
------------------
+Important notes and troubleshooting
+===================================
 
-1. Make sure your Craft database credentials are set correctly, e.g.:
+1. Running `vagrant destroy` is the virtual equivalent of throwing a computer out of the window so make sure you have a DB back-up first!
+
+2. Make sure your Craft database credentials are set correctly, e.g.:
 
 		'.local' => array(
 			'server'      => 'localhost',
@@ -65,15 +67,17 @@ Important gotchas
 			'tablePrefix' => 'craft'
 		)
 
-2. The Nginx virtual host file assumes you are serving Craft from a folder called `public` within the root of your project, if that's not the case it can be edited in the file `/files/nginx/sites-available/default` at line 5.
-
 3. For performance reasons the `craft/storage/runtime` folder is excluded from the Vagrant synced folder.  As Craft writes a lot of log entries here this has a major impact on the VM performance (particularly on Windows).  So excluding the folder makes the site run a LOT quicker but remember you need to `vagrant ssh` onto the VM to access the `craft.log` file.
 
 4. In the Vagrantfile on lines 21 and 22 you may need to adjust the memory and CPU settings for the VM.
 
 5. Using the `precise64.box` assumes you are running a 64-bit OS. I haven't tried but I assume you can switch to `precise32.box` if necessary (lines 10 and 11 of the Vagrantfile).
 
-6. Running `vagrant destroy` is the virtual equivalent of throwing a computer out of the window so make sure you have a DB back-up first!
+6. You can un-comment line 20 in the Vagrantfile so that Virtualbox will launch a GUI so you can see the console for the VM as it launches for troubleshooting.
+
+7. The Nginx virtual host file assumes you are serving Craft from a folder called `public` within the root of your project, if that's not the case it can be edited in the file `/files/nginx/sites-available/default` at line 5.
+
+8. The server name that is presented to Craft CMS is "vagrant.local". This can be changed on line ~4 of the file `/files/nginx/sites-available/default` so it matches your multi-environment config.
 
 Nginx
 -----
@@ -81,8 +85,6 @@ Nginx
 This is pre-configured to work with PHP-FPM and includes a Craft CMS friendly virtual host file and also another for phpMyAdmin.
 
 The Craft CMS virtual host file includes some development friendly cache expiry settings too.
-
-The server name that is presented to Craft CMS is "vagrant.local". This can be changed on line ~4 of the file `/files/nginx/sites-available/default` so it matches your multi-environment config.
 
 MySQL
 -----
@@ -105,11 +107,6 @@ Craft CMS not included!
 -----------------------
 
 This doesn't actually include Craft CMS! Sorry, it's intended to be dropped *into* your Craft CMS project.
-
-Troubleshooting
-===============
-
-You can un-comment line 20 in the Vagrantfile so that Virtualbox will launch a GUI so you can see the console for the VM as it launches and deal with any warnings/issues.
 
 With thanks to...
 =================
